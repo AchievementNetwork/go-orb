@@ -1,0 +1,12 @@
+description: >
+  Invoke the Makefile test target
+
+steps:
+  - cache-modules
+  - run:
+      name: Go Unit Tests
+      environment:
+        GO111MODULE: "on"
+        GOPRIVATE: "github.com/AchievementNetwork/*"
+      command: |
+        make test

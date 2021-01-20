@@ -1,0 +1,13 @@
+description: >
+  Example of a job that will produce unit test coverage build artifacts
+
+usage:
+  version: 2.1
+  orbs:
+    go: achievementnetwork/go@1.0.0
+  jobs:
+    go-test-coverage:
+      docker:
+        - image: circleci/golang:1.15
+      steps:
+        - go/testcover

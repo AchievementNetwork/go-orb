@@ -1,0 +1,13 @@
+description: >
+  Example of a job that will build Go executables
+
+usage:
+  version: 2.1
+  orbs:
+    go: achievementnetwork/go@1.0.0
+  jobs:
+    go-build:
+      docker:
+        - image: circleci/golang:1.15
+      steps:
+        - go/build

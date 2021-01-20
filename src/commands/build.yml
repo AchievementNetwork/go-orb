@@ -1,0 +1,15 @@
+description: >
+  Invoke the Makefile build target
+
+steps:
+  - cache-modules
+  - run:
+      name: Build Go executables
+      environment:
+        CGO_ENABLED: "0"
+        GO111MODULE: "on"
+        GOARCH: "amd64"
+        GOOS: "linux"
+        GOPRIVATE: "github.com/AchievementNetwork/*"
+      command: |
+        make build

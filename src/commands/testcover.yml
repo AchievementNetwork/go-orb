@@ -1,0 +1,37 @@
+description: >
+  Invoke the Makefile testcover target
+
+parameters:
+  raw-coverage-file:
+    description: File that will be used to record raw code coverage information
+    type: string
+    default: coverage.raw
+  html-coverage-file:
+    description: File that will contain code coverage in HTML format
+    type: string
+    default: coverage.html
+  artifact-directory:
+    description: Directory to place build artifacts into
+    type: string
+    default: /tmp/artifacts
+
+steps:
+  - cache-modules
+  - run:
+      name: Create a build artifact directory
+      command: |
+        mkdir -p << parameters.artifact-directory >>
+  - run:
+      name: Go Unit Tests with coverage
+      environment:
+        GO111MODULE: "on"
+        GOPRIVATE: "github.com/AchievementNetwork/*"
+      command: |
+        make GOTESTCOVERRAW=<< parameters.raw-coverage-file >> GOTESTCOVERHTML=<< parameters.html-coverage-file >> testcover
+  - run:
+      name: Copy over test coverage artifacts
+      command: |
+        cp << parameters.raw-coverage-file >> << parameters.artifact-directory >>
+        cp << parameters.html-coverage-file >> << parameters.artifact-directory >>
+  - store_artifacts:
+      path: << parameters.artifact-directory >>
