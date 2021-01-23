@@ -1,0 +1,13 @@
+description: >
+  Example of a job that will run the unit tests
+
+usage:
+  version: 2.1
+  orbs:
+    go: achievementnetwork/go@1.0.0
+  jobs:
+    go-test:
+      docker:
+        - image: circleci/golang:1.15
+      steps:
+        - go/test
