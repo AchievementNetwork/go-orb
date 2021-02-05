@@ -3,8 +3,8 @@ description: >
   Build go executables
 
 executor:
-  - default
-      version: <<parameters.go_version>>
+  default:
+    version: <<parameters.go_version>>
 
 parameters:
   go_version:

@@ -3,8 +3,8 @@ description: >
   Run linter on go code
 
 executor:
-  - default
-      version: <<parameters.go_version>>
+  default:
+    version: <<parameters.go_version>>
 
 parameters:
   go_version:
