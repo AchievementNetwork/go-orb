@@ -1,0 +1,14 @@
+---
+description: >
+  Example of a job that will run the linter
+
+usage:
+  version: 2.1
+  orbs:
+    go: achievementnetwork/go@1.0.0
+  jobs:
+    go-lint:
+      docker:
+        - image: circleci/golang:1.15
+      steps:
+        - go/lint

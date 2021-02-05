@@ -1,0 +1,13 @@
+---
+description: >
+  Invoke the Makefile lint target
+
+steps:
+  - cache-modules
+  - run:
+      name: Go Unit Tests
+      environment:
+        GO111MODULE: "on"
+        GOPRIVATE: "github.com/AchievementNetwork/*"
+      command: |
+        make lint
