@@ -3,8 +3,8 @@ description: >
   Run unit tests and record unit test coverage
 
 executor:
-  default:
-    version: <<parameters.go_version>>
+  name: default
+  version: <<parameters.go_version>>
 
 parameters:
   go_version:
