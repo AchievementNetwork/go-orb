@@ -3,11 +3,12 @@ description: >
 
 usage:
   version: 2.1
+
   orbs:
-    go: achievementnetwork/go@1.0.0
+    go: achievementnetwork/go@1.1.0
+
   jobs:
     go-test:
-      docker:
-        - image: circleci/golang:1.15
+      executor: go/default
       steps:
         - go/test

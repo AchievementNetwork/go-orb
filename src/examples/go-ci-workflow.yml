@@ -1,0 +1,24 @@
+description: >
+  Example of a workflow that will build, test and lint on every push, branch or tag
+
+usage:
+  version: 2.1
+
+  orbs:
+    go: achievementnetwork/go@1.1.0
+
+  workflows:
+    build-test-lint:
+      jobs:
+        - go/build
+        - go/testcover:
+            requires:
+              - go/build
+        - go/lint:
+            requires:
+              - go/testcover
+            filters:
+              branches:
+                only: /.*/
+              tags:
+                only: /.*/

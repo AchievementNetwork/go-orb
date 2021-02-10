@@ -1,0 +1,16 @@
+description: >
+  Run linter on go code
+
+executor:
+  name: default
+  version: <<parameters.go_version>>
+
+parameters:
+  go_version:
+    description: >
+      The version of GoLang to use
+    type: string
+    default: '1.15'
+
+steps:
+  - lint

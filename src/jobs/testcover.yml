@@ -1,0 +1,16 @@
+description: >
+  Run unit tests and record unit test coverage
+
+executor:
+  name: default
+  version: <<parameters.go_version>>
+
+parameters:
+  go_version:
+    description: >
+      The version of GoLang to use
+    type: string
+    default: '1.15'
+
+steps:
+  - testcover
