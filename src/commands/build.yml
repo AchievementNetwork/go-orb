@@ -1,12 +1,18 @@
 description: >
   Invoke the Makefile build target
 
+parameters:
+  cgo_enabled:
+    description: The value of the CGO_ENABLED environment variable to use
+    type: string
+    default: "0"
+
 steps:
   - cache-modules
   - run:
       name: Build Go executables
       environment:
-        CGO_ENABLED: "0"
+        CGO_ENABLED: << parameters.cgo_enabled >>
         GO111MODULE: "on"
         GOARCH: "amd64"
         GOOS: "linux"

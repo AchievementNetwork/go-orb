@@ -6,11 +6,15 @@ executor:
   version: <<parameters.go_version>>
 
 parameters:
+  cgo_enabled:
+    description: The value of the CGO_ENABLED environment variable
+    type: string
+    default: "0"
   go_version:
-    description: >
-      The version of GoLang to use
+    description: The version of GoLang to use
     type: string
     default: '1.15'
 
 steps:
-  - build
+  - build:
+      cgo_enabled: << parameters.cgo_enabled >>
