@@ -14,7 +14,17 @@ parameters:
     description: The version of GoLang to use
     type: string
     default: '1.15'
+  run_generate:
+    description: Whether to run `go generate` prior to `go build`
+    type: boolean
+    default: true
+  run_get:
+    description: Whether to run `go get` prior to `go build`
+    type: boolean
+    default: true
 
 steps:
   - build:
       cgo_enabled: << parameters.cgo_enabled >>
+      run_generate: << parameters.run_generate >>
+      run_get: << parameters.run_get >>
