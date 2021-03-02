@@ -6,6 +6,14 @@ parameters:
     description: The value of the CGO_ENABLED environment variable to use
     type: string
     default: "0"
+  run_generate:
+    description: Whether to run `go generate` prior to `go build`
+    type: boolean
+    default: true
+  run_get:
+    description: Whether to run `go get` prior to `go build`
+    type: boolean
+    default: true
 
 steps:
   - cache-modules
@@ -17,5 +25,7 @@ steps:
         GOARCH: "amd64"
         GOOS: "linux"
         GOPRIVATE: "github.com/AchievementNetwork/*"
+        GORUNGENERATE: <<# parameters.run_generate >>yes<</ parameters.run_generate>>
+        GORUNGET: <<# parameters.run_get >>yes<</ parameters.run_get>>
       command: |
         make build
